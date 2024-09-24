@@ -6,22 +6,31 @@
         "before": [
           {
             "result": {
-              "duration": 5769633300,
+              "duration": 7030870500,
               "status": "passed"
             },
             "match": {
               "location": "DashboardStep.setUp()"
             }
+          },
+          {
+            "result": {
+              "duration": 3914400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PatientStep.setUp()"
+            }
           }
         ],
-        "line": 38,
-        "name": "Verify birthdate input with invalid format and show error",
+        "line": 3,
+        "name": "Search for a patient by ID and set a review date",
         "description": "",
-        "id": "dashboard-functionality;verify-birthdate-input-with-invalid-format-and-show-error",
+        "id": "patient-search-functionality;search-for-a-patient-by-id-and-set-a-review-date",
         "after": [
           {
             "result": {
-              "duration": 1316457500,
+              "duration": 2315664200,
               "status": "passed"
             },
             "match": {
@@ -34,79 +43,90 @@
         "steps": [
           {
             "result": {
-              "duration": 20385404600,
+              "duration": 32309402100,
               "status": "passed"
             },
-            "line": 39,
-            "name": "User is logged in successfully",
+            "line": 4,
+            "name": "User is logged in successfully for patient search",
             "match": {
-              "location": "DashboardStep.user_is_logged_in_successfully()"
+              "location": "PatientStep.user_is_logged_in_successfully_for_patient_search()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 378588800,
+              "duration": 378549100,
               "status": "passed"
             },
-            "line": 40,
-            "name": "User clicks on the Patient button",
+            "line": 5,
+            "name": "User clicks on the Patient button for patient search",
             "match": {
-              "location": "DashboardStep.user_clicks_on_patient_button()"
+              "location": "PatientStep.user_clicks_on_patient_button()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 253411200,
+              "duration": 1754790900,
               "status": "passed"
             },
-            "line": 41,
-            "name": "User clicks on the Advanced button",
-            "match": {
-              "location": "DashboardStep.user_clicks_on_advanced_button()"
-            },
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "duration": 1522580900,
-              "status": "passed"
-            },
-            "line": 42,
-            "name": "User enters \"01/01/1965\" in the birthdate field",
+            "line": 6,
+            "name": "User enters the patient ID \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
             "match": {
               "arguments": [
                 {
-                  "val": "01/01/1965",
-                  "offset": 13
+                  "val": "da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9",
+                  "offset": 28
                 }
               ],
-              "location": "DashboardStep.user_enters_birthdate(String)"
+              "location": "PatientStep.user_enters_the_patient_id(String)"
             },
-            "keyword": "Then "
+            "keyword": "And "
           },
           {
             "result": {
-              "error_message": "java.lang.AssertionError: Error popup not found or failed to verify: Expected condition failed: waiting for visibility of element located by By.xpath: //div[contains(@class, \u0027swal2-popup\u0027)] (tried for 20 second(s) with 500 milliseconds interval)\nBuild info: version: \u00274.24.0\u0027, revision: \u0027748ffc9bc3\u0027\nSystem info: os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002717.0.1\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 128.0.6613.138, chrome: {chromedriverVersion: 127.0.6533.99 (f31af5097d90..., userDataDir: C:\\Users\\zaina\\AppData\\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60977}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60977/devtoo..., se:cdpVersion: 128.0.6613.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: 49cf01469817ad827bc780287a8aa011\r\n\tat org.testng.Assert.fail(Assert.java:99)\r\n\tat pages.DashboardPage.verifyInvalidBirthdateError(DashboardPage.java:145)\r\n\tat StepDefinition.DashboardStep.invalid_birthdate_error_popup_should_be_displayed(DashboardStep.java:134)\r\n\tat ✽.Invalid birthdate error popup should be displayed(src/test/java/features/dashboard.feature:43)\r\n",
-              "duration": 20906304000,
-              "status": "failed"
+              "duration": 5691963400,
+              "status": "passed"
             },
-            "line": 43,
-            "name": "Invalid birthdate error popup should be displayed",
+            "line": 7,
+            "name": "User clicks on the Reports button",
             "match": {
-              "location": "DashboardStep.invalid_birthdate_error_popup_should_be_displayed()"
+              "location": "PatientStep.user_clicks_on_reports_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 523144600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User selects the date 10 days back",
+            "match": {
+              "location": "PatientStep.user_selects_date_10_days_back()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 317855900,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "User clicks on the Date Converstion button",
+            "match": {
+              "location": "PatientStep.user_clicks_on_set_review_button()"
             },
             "keyword": "Then "
           }
         ]
       }
     ],
-    "name": "Dashboard Functionality",
+    "name": "Patient Search Functionality",
     "description": "",
-    "id": "dashboard-functionality",
+    "id": "patient-search-functionality",
     "keyword": "Feature",
-    "uri": "src/test/java/features/dashboard.feature",
+    "uri": "src/test/java/features/Patient.feature",
     "tags": []
   }
 ]
