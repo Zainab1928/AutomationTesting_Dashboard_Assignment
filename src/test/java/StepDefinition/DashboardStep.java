@@ -95,6 +95,7 @@ public class DashboardStep {
         }
     }
 
+    //verify error alert message when enter invalid zipcode and click on search button
     @Then("^User enters \"([^\"]*)\" in the zipcode field$")
     public void user_enters_zipcode(String zipcode) {
         try {
@@ -117,6 +118,93 @@ public class DashboardStep {
         }
     }
 
+
+    //verify tooltip message when provide invalid zipcode
+    @Then("^User enters \"([^\"]*)\" in the zipcode field and submits$")
+    public void user_enters_invalid_zipcode_and_submits(String zipcode) {
+        try {
+            dashboardPage.enterInvalidZipcode(zipcode);
+            ExtentReportUtil.logPass("User entered '" + zipcode + "' in the zipcode field and clicked submit.");
+        } catch (Exception e) {
+            ExtentReportUtil.logFail("Failed to enter zipcode and submit search: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("^Tooltip with message \"([^\"]*)\" should be displayed$")
+    public void tooltip_with_message_should_be_displayed(String expectedTooltipMessage) {
+        try {
+            dashboardPage.verifyTooltipMessage(expectedTooltipMessage);
+            ExtentReportUtil.logPass("Tooltip displayed with expected message: " + expectedTooltipMessage);
+        } catch (AssertionError e) {
+            ExtentReportUtil.logFail("Tooltip did not display as expected: " + expectedTooltipMessage);
+            throw e;
+        }
+    }
+
+    //verify tooltip message when provide invalid phoneno
+    @Then("^User enters \"([^\"]*)\" in the phoneno field and submits$")
+    public void user_enters_invalid_phoneno_and_submits(String phoneno) {
+        try {
+            dashboardPage.enterInvalidPhoneno(phoneno);
+            ExtentReportUtil.logPass("User entered '" + phoneno + "' in the phoneno field and clicked submit.");
+        } catch (Exception e) {
+            ExtentReportUtil.logFail("Failed to enter phoneno and submit search: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("^Tooltip for phoneno with message \"([^\"]*)\" should be displayed$")
+    public void tooltip_with_message_should_be_displayed_for_phoneno(String expectedTooltipMessage) {
+
+        try {
+            dashboardPage.verifyTooltipMessageForPhone(expectedTooltipMessage);
+            ExtentReportUtil.logPass("Tooltip displayed with expected message: " + expectedTooltipMessage);
+        } catch (AssertionError e) {
+            ExtentReportUtil.logFail("Tooltip did not display as expected: " + expectedTooltipMessage);
+            throw e;
+        }
+    }
+
+
+
+
+
+
+
+
+    //verify tooltip message when provide invalid birthdate
+    @Then("^User enters \"(\\d{2}-\\d{3}-\\d{2})\" in the birthdate field and submits$")
+    public void user_enters_invalid_birthdate_and_submits(String birthdate) {
+        try {
+            dashboardPage.enterInvalidbirthdate(birthdate);
+            ExtentReportUtil.logPass("User entered '" + birthdate + "' in the birthdate field and clicked submit.");
+        } catch (Exception e) {
+            ExtentReportUtil.logFail("Failed to enter birthdate and submit search: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("^Tooltip for birthdate with message \"([^\"]*)\" should be displayed$")
+    public void tooltip_with_message_should_be_displayed_for_birthdate(String expectedTooltipMessage) {
+
+        try {
+            dashboardPage.verifyTooltipMessageForBirthdate(expectedTooltipMessage);
+            ExtentReportUtil.logPass("Tooltip displayed with expected message: " + expectedTooltipMessage);
+        } catch (AssertionError e) {
+            ExtentReportUtil.logFail("Tooltip did not display as expected: " + expectedTooltipMessage);
+            throw e;
+        }
+    }
+
+
+
+
+
+
+
+
+    //verify error alert message when enter invalid birthdate and click on search button
     @Then("^User enters \"([^\"]*)\" in the birthdate field$")
     public void user_enters_birthdate(String birthdate) {
         try {
@@ -139,6 +227,7 @@ public class DashboardStep {
         }
     }
 
+    //verify error alert message when enter invalid mobile number and click on search button
     @Then("^User enters \"([^\"]*)\" in the mobile number field$")
     public void user_enters_mobile_number(String mobileNumber) {
         try {

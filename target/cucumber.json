@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 7030870500,
+              "duration": 9662435700,
               "status": "passed"
             },
             "match": {
@@ -15,7 +15,7 @@
           },
           {
             "result": {
-              "duration": 3914400,
+              "duration": 4929100,
               "status": "passed"
             },
             "match": {
@@ -23,14 +23,14 @@
             }
           }
         ],
-        "line": 3,
-        "name": "Search for a patient by ID and set a review date",
+        "line": 74,
+        "name": "Verify the birthdate input and tooltip",
         "description": "",
-        "id": "patient-search-functionality;search-for-a-patient-by-id-and-set-a-review-date",
+        "id": "dashboard-functionality;verify-the-birthdate-input-and-tooltip",
         "after": [
           {
             "result": {
-              "duration": 2315664200,
+              "duration": 14282743900,
               "status": "passed"
             },
             "match": {
@@ -43,90 +43,84 @@
         "steps": [
           {
             "result": {
-              "duration": 32309402100,
+              "duration": 22138893300,
               "status": "passed"
             },
-            "line": 4,
-            "name": "User is logged in successfully for patient search",
+            "line": 75,
+            "name": "User is logged in successfully",
             "match": {
-              "location": "PatientStep.user_is_logged_in_successfully_for_patient_search()"
+              "location": "DashboardStep.user_is_logged_in_successfully()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 378549100,
+              "duration": 3267198300,
               "status": "passed"
             },
-            "line": 5,
-            "name": "User clicks on the Patient button for patient search",
+            "line": 76,
+            "name": "User clicks on the Patient button",
             "match": {
-              "location": "PatientStep.user_clicks_on_patient_button()"
+              "location": "DashboardStep.user_clicks_on_patient_button()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 1754790900,
+              "duration": 481620600,
               "status": "passed"
             },
-            "line": 6,
-            "name": "User enters the patient ID \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
+            "line": 77,
+            "name": "User clicks on the Advanced button",
+            "match": {
+              "location": "DashboardStep.user_clicks_on_advanced_button()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1529080000,
+              "status": "passed"
+            },
+            "line": 78,
+            "name": "User enters \"65-746-98\" in the birthdate field and submits",
             "match": {
               "arguments": [
                 {
-                  "val": "da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9",
-                  "offset": 28
+                  "val": "65-746-98",
+                  "offset": 13
                 }
               ],
-              "location": "PatientStep.user_enters_the_patient_id(String)"
+              "location": "DashboardStep.user_enters_invalid_birthdate_and_submits(String)"
             },
-            "keyword": "And "
+            "keyword": "Then "
           },
           {
             "result": {
-              "duration": 5691963400,
+              "duration": 157785400,
               "status": "passed"
             },
-            "line": 7,
-            "name": "User clicks on the Reports button",
+            "line": 79,
+            "name": "Tooltip for birthdate with message \"Please match the requested format\" should be displayed",
             "match": {
-              "location": "PatientStep.user_clicks_on_reports_button()"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 523144600,
-              "status": "passed"
-            },
-            "line": 8,
-            "name": "User selects the date 10 days back",
-            "match": {
-              "location": "PatientStep.user_selects_date_10_days_back()"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 317855900,
-              "status": "passed"
-            },
-            "line": 9,
-            "name": "User clicks on the Date Converstion button",
-            "match": {
-              "location": "PatientStep.user_clicks_on_set_review_button()"
+              "arguments": [
+                {
+                  "val": "Please match the requested format",
+                  "offset": 36
+                }
+              ],
+              "location": "DashboardStep.tooltip_with_message_should_be_displayed_for_birthdate(String)"
             },
             "keyword": "Then "
           }
         ]
       }
     ],
-    "name": "Patient Search Functionality",
+    "name": "Dashboard Functionality",
     "description": "",
-    "id": "patient-search-functionality",
+    "id": "dashboard-functionality",
     "keyword": "Feature",
-    "uri": "src/test/java/features/Patient.feature",
+    "uri": "src/test/java/features/dashboard.feature",
     "tags": []
   }
 ]

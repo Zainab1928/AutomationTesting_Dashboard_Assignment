@@ -90,7 +90,7 @@ public class PatientStep {
     public void user_clicks_on_set_review_button() {
         try {
             patientPage.clickSetReviewButton();
-            ExtentReportUtil.logPass("Date Converstion button clicked.");
+            ExtentReportUtil.logPass("Date Convertion button clicked.");
         } catch (Exception e) {
             ExtentReportUtil.logFail("Failed to click on Date Converstion button: " + e.getMessage());
             throw e;

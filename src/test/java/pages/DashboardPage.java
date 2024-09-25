@@ -30,6 +30,9 @@ public class DashboardPage {
 
     private By mobileInput = By.xpath("//input[@name='phone']");
 
+    private By submitSearchButton = By.xpath("//button[@type='submit' and @aria-label='search button']");
+    private By tooltip = By.xpath("//div[contains(@class, '__react_component_tooltip')]");
+
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -101,6 +104,104 @@ public class DashboardPage {
             Assert.fail("Error popup or OK button not found: " + e.getMessage());
         }
     }
+
+    //verify tooltip message when provide invalid zipcode
+    public void enterInvalidZipcode(String zipcode) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(zipcodeInput)).sendKeys(zipcode);
+            wait.until(ExpectedConditions.elementToBeClickable(submitSearchButton)).click();
+        } catch (Exception e) {
+            Assert.fail("ZIP code input field or search button not found: " + e.getMessage());
+        }
+    }
+
+    public void verifyTooltipMessage(String expectedMessage) {
+        try {
+            // Wait for the zipcode input field to be visible
+            WebElement zipcodeElement = wait.until(ExpectedConditions.visibilityOfElementLocated(zipcodeInput));
+
+            // Check different attributes for the tooltip message
+            String actualMessage = zipcodeElement.getAttribute("validationMessage");  // Use 'validationMessage' for HTML5 validation tooltips
+
+            // Verify the tooltip message
+            Assert.assertTrue(actualMessage.contains(expectedMessage),
+                    "Tooltip message mismatch. Expected: " + expectedMessage + ", but got: " + actualMessage);
+
+        } catch (Exception e) {
+            Assert.fail("Tooltip not found or did not match expected message: " + e.getMessage());
+        }
+    }
+
+
+    //verify tooltip message when provide invalid phoneno
+    public void enterInvalidPhoneno(String phoneno) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(mobileInput)).sendKeys(phoneno);
+            wait.until(ExpectedConditions.elementToBeClickable(submitSearchButton)).click();
+        } catch (Exception e) {
+            Assert.fail("phoneno input field or search button not found: " + e.getMessage());
+        }
+    }
+
+    public void verifyTooltipMessageForPhone(String expectedMessage) {
+        try {
+            // Wait for the phoneno input field to be visible
+            WebElement phonenoElement = wait.until(ExpectedConditions.visibilityOfElementLocated(mobileInput));
+
+            // Check different attributes for the tooltip message
+            String actualMessage = phonenoElement.getAttribute("validationMessage");  // Use 'validationMessage' for HTML5 validation tooltips
+
+            // Verify the tooltip message
+            Assert.assertTrue(actualMessage.contains(expectedMessage),
+                    "Tooltip message mismatch. Expected: " + expectedMessage + ", but got: " + actualMessage);
+
+        } catch (Exception e) {
+            Assert.fail("Tooltip not found or did not match expected message: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
+    //verify tooltip message when provide invalid birthdate
+    public void enterInvalidbirthdate(String birthdate) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(birthdateInput)).sendKeys(birthdate);
+            wait.until(ExpectedConditions.elementToBeClickable(submitSearchButton)).click();
+        } catch (Exception e) {
+            Assert.fail("Birthdate input field or search button not found: " + e.getMessage());
+        }
+    }
+
+    public void verifyTooltipMessageForBirthdate(String expectedMessage) {
+        try {
+            // Wait for the birthdate input field to be visible
+            WebElement birthdateElement = wait.until(ExpectedConditions.visibilityOfElementLocated(birthdateInput));
+
+            // Check different attributes for the tooltip message
+            String actualMessage = birthdateElement.getAttribute("validationMessage");  // Use 'validationMessage' for HTML5 validation tooltips
+
+            // Verify the tooltip message
+            Assert.assertTrue(actualMessage.contains(expectedMessage),
+                    "Tooltip message mismatch. Expected: " + expectedMessage + ", but got: " + actualMessage);
+
+        } catch (Exception e) {
+            Assert.fail("Tooltip not found or did not match expected message: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     public void enterState(String state) {

@@ -16,7 +16,9 @@ public class PatientPage {
     // Locators
     private By patientIdInput = By.xpath("//input[@type='search']");
     private By reportsButton = By.xpath("//div[contains(text(),'Reports')]");
+
     private By mtmReportsButton = By.xpath("//button[@data-tip='Reports for MTM']");
+
     private By tmrRadioButton = By.xpath("//input[@id='interactionReviewType_TMR' and @name='reportType' and @value='tmr']");
     private By calendarInput = By.xpath("//input[@name='conversationDate']");
     // Updated locator for Set Review Button

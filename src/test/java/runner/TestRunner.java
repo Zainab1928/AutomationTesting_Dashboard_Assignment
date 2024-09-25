@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {
                 //"src/test/java/features/login.feature",   // Login feature
-                //"src/test/java/features/dashboard.feature"  // Dashboard feature
-                "src/test/java/features/Patient.feature"
+                "src/test/java/features/dashboard.feature"  // Dashboard feature
+                //"src/test/java/features/Patient.feature"  //patient feature
 
         },
         glue = {"StepDefinition"},
