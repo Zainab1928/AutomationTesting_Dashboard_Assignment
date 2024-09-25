@@ -160,12 +160,6 @@ public class DashboardPage {
         }
     }
 
-
-
-
-
-
-
     //verify tooltip message when provide invalid birthdate
     public void enterInvalidbirthdate(String birthdate) {
         try {
@@ -192,17 +186,6 @@ public class DashboardPage {
             Assert.fail("Tooltip not found or did not match expected message: " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
     public void enterState(String state) {
         try {

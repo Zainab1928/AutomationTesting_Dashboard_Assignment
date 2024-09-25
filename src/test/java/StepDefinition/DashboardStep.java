@@ -167,12 +167,6 @@ public class DashboardStep {
     }
 
 
-
-
-
-
-
-
     //verify tooltip message when provide invalid birthdate
     @Then("^User enters \"(\\d{2}-\\d{3}-\\d{2})\" in the birthdate field and submits$")
     public void user_enters_invalid_birthdate_and_submits(String birthdate) {
@@ -196,13 +190,6 @@ public class DashboardStep {
             throw e;
         }
     }
-
-
-
-
-
-
-
 
     //verify error alert message when enter invalid birthdate and click on search button
     @Then("^User enters \"([^\"]*)\" in the birthdate field$")
