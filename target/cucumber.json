@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 9662435700,
+              "duration": 4881790800,
               "status": "passed"
             },
             "match": {
@@ -15,7 +15,16 @@
           },
           {
             "result": {
-              "duration": 4929100,
+              "duration": 10659522100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PatientInformationVerificationStep.setUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 90204800,
               "status": "passed"
             },
             "match": {
@@ -23,104 +32,320 @@
             }
           }
         ],
-        "line": 74,
-        "name": "Verify the birthdate input and tooltip",
+        "line": 21,
+        "name": "Verify patient information for multiple patients",
         "description": "",
-        "id": "dashboard-functionality;verify-the-birthdate-input-and-tooltip",
+        "id": "etl-patient-information-verification;verify-patient-information-for-multiple-patients;;2",
         "after": [
           {
             "result": {
-              "duration": 14282743900,
+              "duration": 1055815900,
               "status": "passed"
             },
             "match": {
               "location": "DashboardStep.tearDown()"
             }
-          }
-        ],
-        "type": "scenario",
-        "keyword": "Scenario",
-        "steps": [
-          {
-            "result": {
-              "duration": 22138893300,
-              "status": "passed"
-            },
-            "line": 75,
-            "name": "User is logged in successfully",
-            "match": {
-              "location": "DashboardStep.user_is_logged_in_successfully()"
-            },
-            "keyword": "Given "
           },
           {
             "result": {
-              "duration": 3267198300,
+              "duration": 212803100,
               "status": "passed"
             },
-            "line": 76,
-            "name": "User clicks on the Patient button",
             "match": {
-              "location": "DashboardStep.user_clicks_on_patient_button()"
+              "location": "PatientInformationVerificationStep.tearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 4063848900,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "click on patient tab",
+            "match": {
+              "location": "PatientInformationVerificationStep.click_on_patient_tab()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 481620600,
+              "duration": 15430573300,
               "status": "passed"
             },
-            "line": 77,
-            "name": "User clicks on the Advanced button",
-            "match": {
-              "location": "DashboardStep.user_clicks_on_advanced_button()"
-            },
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "duration": 1529080000,
-              "status": "passed"
-            },
-            "line": 78,
-            "name": "User enters \"65-746-98\" in the birthdate field and submits",
+            "line": 5,
+            "name": "search patient: \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
             "match": {
               "arguments": [
                 {
-                  "val": "65-746-98",
-                  "offset": 13
+                  "val": "da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9",
+                  "offset": 17
                 }
               ],
-              "location": "DashboardStep.user_enters_invalid_birthdate_and_submits(String)"
+              "location": "PatientInformationVerificationStep.search_patient(String)"
             },
-            "keyword": "Then "
+            "keyword": "And "
           },
           {
             "result": {
-              "duration": 157785400,
+              "duration": 483383400,
               "status": "passed"
             },
-            "line": 79,
-            "name": "Tooltip for birthdate with message \"Please match the requested format\" should be displayed",
+            "line": 6,
+            "name": "user verifies the patient details from patient info with provided info:",
+            "match": {
+              "location": "PatientInformationVerificationStep.user_verifies_patient_details(String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "Value"
+                ]
+              },
+              {
+                "cells": [
+                  "FirstName",
+                  "Hardstop"
+                ]
+              },
+              {
+                "cells": [
+                  "LastName",
+                  "Select health test patient 1"
+                ]
+              },
+              {
+                "cells": [
+                  "DOB",
+                  "01/01/1965"
+                ]
+              },
+              {
+                "cells": [
+                  "Address1",
+                  "100 Test Drive"
+                ]
+              },
+              {
+                "cells": [
+                  "Address2",
+                  ""
+                ]
+              },
+              {
+                "cells": [
+                  "PreferredPhone",
+                  "111-111-1111"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  ""
+                ]
+              },
+              {
+                "cells": [
+                  "ZipCode",
+                  "99999"
+                ]
+              },
+              {
+                "cells": [
+                  "City",
+                  "Test City"
+                ]
+              },
+              {
+                "cells": [
+                  "Sex",
+                  "female"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 2480677800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "DashboardStep.setUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 14899211000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PatientInformationVerificationStep.setUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 4939600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PatientStep.setUp()"
+            }
+          }
+        ],
+        "line": 22,
+        "name": "Verify patient information for multiple patients",
+        "description": "",
+        "id": "etl-patient-information-verification;verify-patient-information-for-multiple-patients;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 669749300,
+              "status": "passed"
+            },
+            "match": {
+              "location": "DashboardStep.tearDown()"
+            }
+          },
+          {
+            "result": {
+              "duration": 137587100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PatientInformationVerificationStep.tearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 4190776400,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "click on patient tab",
+            "match": {
+              "location": "PatientInformationVerificationStep.click_on_patient_tab()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6139972300,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "search patient: \"a89a0a0c-4202-4b64-949a-5e48c16d1aea\"",
             "match": {
               "arguments": [
                 {
-                  "val": "Please match the requested format",
-                  "offset": 36
+                  "val": "a89a0a0c-4202-4b64-949a-5e48c16d1aea",
+                  "offset": 17
                 }
               ],
-              "location": "DashboardStep.tooltip_with_message_should_be_displayed_for_birthdate(String)"
+              "location": "PatientInformationVerificationStep.search_patient(String)"
             },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 509862500,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "user verifies the patient details from patient info with provided info:",
+            "match": {
+              "location": "PatientInformationVerificationStep.user_verifies_patient_details(String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "Value"
+                ]
+              },
+              {
+                "cells": [
+                  "FirstName",
+                  "Select concierge test patient 8"
+                ]
+              },
+              {
+                "cells": [
+                  "LastName",
+                  "Hardstop"
+                ]
+              },
+              {
+                "cells": [
+                  "DOB",
+                  "01/01/1965"
+                ]
+              },
+              {
+                "cells": [
+                  "Address1",
+                  "100 Test Drive"
+                ]
+              },
+              {
+                "cells": [
+                  "Address2",
+                  ""
+                ]
+              },
+              {
+                "cells": [
+                  "PreferredPhone",
+                  "111-111-1111"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  ""
+                ]
+              },
+              {
+                "cells": [
+                  "ZipCode",
+                  "99999"
+                ]
+              },
+              {
+                "cells": [
+                  "City",
+                  "Test City"
+                ]
+              },
+              {
+                "cells": [
+                  "Sex",
+                  "female"
+                ]
+              }
+            ],
             "keyword": "Then "
           }
         ]
       }
     ],
-    "name": "Dashboard Functionality",
+    "name": "ETL Patient Information Verification",
     "description": "",
-    "id": "dashboard-functionality",
+    "id": "etl-patient-information-verification",
     "keyword": "Feature",
-    "uri": "src/test/java/features/dashboard.feature",
+    "uri": "src/test/java/features/Patient-Information-Verification.feature",
     "tags": []
   }
 ]

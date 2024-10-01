@@ -35,7 +35,7 @@ public class ExtentReportUtil {
 
     // Start the test with the given name
     public static void startTest(String testName) {
-        test = extent.createTest(testName);
+        test = extent.createTest(testName).assignAuthor("Zainab").assignCategory("Functional testcase").assignDevice("Windows");
     }
 
     // Log information messages
