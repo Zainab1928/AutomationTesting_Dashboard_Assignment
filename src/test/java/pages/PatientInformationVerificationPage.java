@@ -1,17 +1,32 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utility.AutomationException;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.MediaEntityBuilder;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 public class PatientInformationVerificationPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private ExtentTest test;
+    private static final String SCREENSHOT_PATH = "target/screenshots";
 
     // Static XPaths for patient tab, input fields, and patient information fields
     public static final By PATIENT_TAB = By.xpath("//*[@id='router-wrapper']/div/div[1]/div[1]/button[2]");
@@ -32,9 +47,10 @@ public class PatientInformationVerificationPage {
     public static final By PREFERRED_PHONE_LABEL = By.xpath("//label[text()='Preferred Phone']");
 
     // Constructor
-    public PatientInformationVerificationPage(WebDriver driver) {
+    public PatientInformationVerificationPage(WebDriver driver, ExtentTest test) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Explicit wait of 10 seconds
+        this.test = test;
     }
 
     // Method to click on the patient tab
@@ -42,6 +58,7 @@ public class PatientInformationVerificationPage {
         try {
             driver.findElement(PATIENT_TAB).click();
         } catch (Exception e) {
+            captureScreenshotOnFailure();
             throw new AutomationException("Failed to click on Patient Tab", e);
         }
     }
@@ -53,6 +70,7 @@ public class PatientInformationVerificationPage {
             inputField.clear();
             inputField.sendKeys(patientId);
         } catch (Exception e) {
+            captureScreenshotOnFailure();
             throw new AutomationException("Failed to enter Patient ID: " + patientId, e);
         }
     }
@@ -63,29 +81,18 @@ public class PatientInformationVerificationPage {
             wait.until(ExpectedConditions.visibilityOfElementLocated(NAME_INPUT));
             wait.until(ExpectedConditions.visibilityOfElementLocated(PATIENT_INFO_DIV));
         } catch (Exception e) {
+            captureScreenshotOnFailure();
             throw new AutomationException("Patient details did not load properly", e);
         }
     }
 
     // Methods to retrieve patient information fields with AutomationException handling
     public String getFirstName() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(FIRST_NAME_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve First Name", e);
-        }
+        return getAttributeValue(FIRST_NAME_LABEL, "First Name");
     }
 
     public String getLastName() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(LAST_NAME_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve Last Name", e);
-        }
+        return getAttributeValue(LAST_NAME_LABEL, "Last Name");
     }
 
     public String getDob() throws AutomationException {
@@ -93,77 +100,107 @@ public class PatientInformationVerificationPage {
             WebElement input = driver.findElement(DOB_INPUT);
             return input.getAttribute("value");
         } catch (Exception e) {
+            captureScreenshotOnFailure();
             throw new AutomationException("Failed to retrieve DOB", e);
         }
     }
 
     public String getSex() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(SEX_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve Sex", e);
-        }
+        return getAttributeValue(SEX_LABEL, "Sex");
     }
 
     public String getAddress1() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(ADDRESS1_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve Address 1", e);
-        }
+        return getAttributeValue(ADDRESS1_LABEL, "Address 1");
     }
 
     public String getAddress2() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(ADDRESS2_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve Address 2", e);
-        }
+        return getAttributeValue(ADDRESS2_LABEL, "Address 2");
     }
 
     public String getZipCode() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(ZIP_CODE_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve Zip Code", e);
-        }
+        return getAttributeValue(ZIP_CODE_LABEL, "Zip Code");
     }
 
     public String getEmail() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(EMAIL_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve Email", e);
-        }
+        return getAttributeValue(EMAIL_LABEL, "Email");
     }
 
     public String getCity() throws AutomationException {
-        try {
-            WebElement label = driver.findElement(CITY_LABEL);
-            WebElement input = label.findElement(By.xpath("./following-sibling::input"));
-            return input.getAttribute("value");
-        } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve City", e);
-        }
+        return getAttributeValue(CITY_LABEL, "City");
     }
 
     public String getPreferredPhone() throws AutomationException {
+        return getAttributeValue(PREFERRED_PHONE_LABEL, "Preferred Phone");
+    }
+
+    // Helper method to retrieve input field values associated with labels
+    private String getAttributeValue(By labelLocator, String fieldName) throws AutomationException {
         try {
-            WebElement label = driver.findElement(PREFERRED_PHONE_LABEL);
+            WebElement label = driver.findElement(labelLocator);
             WebElement input = label.findElement(By.xpath("./following-sibling::input"));
             return input.getAttribute("value");
         } catch (Exception e) {
-            throw new AutomationException("Failed to retrieve Preferred Phone", e);
+            captureScreenshotOnFailure();
+            throw new AutomationException("Failed to retrieve " + fieldName, e);
+        }
+    }
+
+    // New method: verify patient details
+    public void verifyPatientDetails(Map<String, String> patientData) throws AutomationException {
+        try {
+            verifyField("First Name", patientData.get("FirstName"), getFirstName());
+            verifyField("Last Name", patientData.get("LastName"), getLastName());
+            verifyField("DOB", patientData.get("DOB"), getDob());
+            verifyField("Address 1", patientData.get("Address1"), getAddress1());
+            verifyField("Address 2", patientData.get("Address2"), getAddress2());
+            verifyField("Preferred Phone", patientData.get("PreferredPhone"), getPreferredPhone());
+            verifyField("Email", patientData.get("Email"), getEmail());
+            verifyField("Zip Code", patientData.get("ZipCode"), getZipCode());
+            verifyField("City", patientData.get("City"), getCity());
+            verifyField("Sex", patientData.get("Sex"), getSex());
+        } catch (Exception e) {
+            captureScreenshotOnFailure();
+            throw new AutomationException("Error verifying patient details", e);
+        }
+    }
+
+    // Helper method for field verification
+    private void verifyField(String fieldName, String expectedValue, String actualValue) {
+        if (expectedValue != null && !expectedValue.isEmpty() && actualValue != null && !actualValue.isEmpty()) {
+            assertEquals(expectedValue, actualValue);
+            test.log(Status.PASS, fieldName + " matches: " + expectedValue);
+        } else {
+            test.log(Status.INFO, fieldName + " is empty, skipping verification.");
+        }
+    }
+
+    // Helper method to capture screenshots on failure
+    private void captureScreenshotOnFailure() {
+        try {
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
+            File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
+
+            // Ensure target screenshot directory exists
+            Files.createDirectories(Paths.get(SCREENSHOT_PATH));
+
+            // Construct the destination path
+            String destinationPath = SCREENSHOT_PATH + "/screenshot_" + System.currentTimeMillis() + ".png";
+            File destination = new File(destinationPath);
+
+            // Copy screenshot to destination
+            Files.copy(screenshotFile.toPath(), destination.toPath());
+
+            // Log the screenshot in the Extent report
+            test.fail("Failure screenshot", MediaEntityBuilder.createScreenCaptureFromPath(destination.getPath()).build());
+
+        } catch (IOException ioException) {
+            // Detailed logging for the failure to capture screenshot
+            test.fail("Failed to capture screenshot: " + ioException.getMessage());
+            ioException.printStackTrace();  // Print stack trace to help diagnose the problem
+        } catch (Exception e) {
+            // Catch any other unexpected exceptions
+            test.fail("An unexpected error occurred while capturing the screenshot: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
