@@ -13,7 +13,6 @@ import utility.DriverFactory;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
 import java.util.Map;
 
 public class PatientInformationVerificationStep {
@@ -36,7 +35,7 @@ public class PatientInformationVerificationStep {
             test = extent.createTest("Patient Information Verification Test");
 
             // Initialize the patient page with ExtentTest
-            patientPage = new PatientInformationVerificationPage(driver, test);
+            patientPage = new PatientInformationVerificationPage();
 
             // Log in to the system
             driver.get("https://pharmacist-dev.arine.io");

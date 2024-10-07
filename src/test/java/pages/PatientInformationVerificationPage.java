@@ -47,7 +47,7 @@ public class PatientInformationVerificationPage {
     public static final By PREFERRED_PHONE_LABEL = By.xpath("//label[text()='Preferred Phone']");
 
     // Constructor
-    public PatientInformationVerificationPage(WebDriver driver, ExtentTest test) {
+    public PatientInformationVerificationPage() {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Explicit wait of 10 seconds
         this.test = test;
@@ -184,23 +184,24 @@ public class PatientInformationVerificationPage {
             Files.createDirectories(Paths.get(SCREENSHOT_PATH));
 
             // Construct the destination path
-            String destinationPath = SCREENSHOT_PATH + "/screenshot_" + System.currentTimeMillis() + ".png";
+            String timestamp = String.valueOf(System.currentTimeMillis());
+            String screenshotFileName = "screenshot_" + timestamp + ".png"; // Improved naming
+            String destinationPath = SCREENSHOT_PATH + "/" + screenshotFileName;
             File destination = new File(destinationPath);
 
             // Copy screenshot to destination
             Files.copy(screenshotFile.toPath(), destination.toPath());
 
             // Log the screenshot in the Extent report
-            test.fail("Failure screenshot", MediaEntityBuilder.createScreenCaptureFromPath(destination.getPath()).build());
+            test.fail("Failure screenshot", MediaEntityBuilder.createScreenCaptureFromPath(screenshotFileName).build());
 
         } catch (IOException ioException) {
-            // Detailed logging for the failure to capture screenshot
             test.fail("Failed to capture screenshot: " + ioException.getMessage());
-            ioException.printStackTrace();  // Print stack trace to help diagnose the problem
+            ioException.printStackTrace();
         } catch (Exception e) {
-            // Catch any other unexpected exceptions
             test.fail("An unexpected error occurred while capturing the screenshot: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 }

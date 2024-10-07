@@ -2,8 +2,8 @@ Feature: ETL Patient Information Verification
 
   Scenario Outline: Verify patient information for multiple patients
     When click on patient tab
-    And search patient: "<PatientId>"
-    Then user verifies the patient details from patient info with provided info:
+    And user enters patient id <PatientId>
+    Then user verifies patient details
       | Field             | Value               |
       | FirstName         | <FirstName>         |
       | LastName          | <LastName>          |

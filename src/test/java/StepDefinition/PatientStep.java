@@ -1,6 +1,5 @@
 package StepDefinition;
 
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,8 +9,6 @@ import pages.LoginPage;
 import pages.PatientPage;
 import utility.DriverFactory;
 import utility.AutomationException;
-import utility.ExtentReportUtil;
-
 public class PatientStep {
 
     WebDriver driver = DriverFactory.getDriver();
@@ -19,14 +16,9 @@ public class PatientStep {
     PatientPage patientPage = new PatientPage(driver);
     DashboardStep dashboardStep = new DashboardStep();  // Reusing DashboardStep
 
-    @Before
-    public void setUp() {
-        ExtentReportUtil.initExtentReport();
-    }
 
     @Given("^User is logged in successfully with \"([^\"]*)\" and \"([^\"]*)\"$")
     public void user_is_logged_in_successfully_for_patient_search_with_credentials(String username, String password) throws AutomationException {
-        ExtentReportUtil.startTest("Patient Search Test Case");
         try {
             driver.get("https://pharmacist-dev.arine.io/");
             loginPage.enterEmail(username);
@@ -46,7 +38,7 @@ public class PatientStep {
         }
     }
 
-    @When("^User enters the patient ID \"([^\"]*)\"$")
+    @When("^User enters patient ID \"([^\"]*)\"$")
     public void user_enters_the_patient_id(String patientId) throws AutomationException {
         try {
             patientPage.enterPatientID(patientId);

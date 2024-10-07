@@ -1,150 +1,13 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/java/features/Patient-Information-Verification.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/java/features/DragdropVerification.feature");
 formatter.feature({
-  "name": "ETL Patient Information Verification",
+  "name": "Verify draggable table headings in the Patient Task",
   "description": "",
   "keyword": "Feature"
 });
-formatter.scenarioOutline({
-  "name": "Verify patient information for multiple patients",
-  "description": "",
-  "keyword": "Scenario Outline"
-});
-formatter.step({
-  "name": "click on patient tab",
-  "keyword": "When "
-});
-formatter.step({
-  "name": "search patient: \"\u003cPatientId\u003e\"",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "user verifies the patient details from patient info with provided info:",
-  "keyword": "Then ",
-  "rows": [
-    {
-      "cells": [
-        "Field",
-        "Value"
-      ]
-    },
-    {
-      "cells": [
-        "FirstName",
-        "\u003cFirstName\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "LastName",
-        "\u003cLastName\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "DOB",
-        "\u003cDOB\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "Address1",
-        "\u003cAddress1\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "Address2",
-        "\u003cAddress2\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "PreferredPhone",
-        "\u003cPreferredPhone\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "Email",
-        "\u003cEmail\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "ZipCode",
-        "\u003cZipCode\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "City",
-        "\u003cCity\u003e"
-      ]
-    },
-    {
-      "cells": [
-        "Sex",
-        "\u003cSex\u003e"
-      ]
-    }
-  ]
-});
-formatter.examples({
-  "name": "",
-  "description": "",
-  "keyword": "Examples",
-  "rows": [
-    {
-      "cells": [
-        "PatientId",
-        "FirstName",
-        "LastName",
-        "DOB",
-        "Address1",
-        "Address2",
-        "PreferredPhone",
-        "Email",
-        "ZipCode",
-        "City",
-        "Sex"
-      ]
-    },
-    {
-      "cells": [
-        "da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9",
-        "Hardstop",
-        "Select health test patient 1",
-        "01/01/1965",
-        "100 Test Drive",
-        "",
-        "111-111-1111",
-        "",
-        "99999",
-        "Test City",
-        "female"
-      ]
-    },
-    {
-      "cells": [
-        "a89a0a0c-4202-4b64-949a-5e48c16d1aea",
-        "Select concierge test patient 8",
-        "Hardstop",
-        "01/01/1965",
-        "100 Test Drive",
-        "",
-        "111-111-1111",
-        "",
-        "99999",
-        "Test City",
-        "female"
-      ]
-    }
-  ]
-});
 formatter.scenario({
-  "name": "Verify patient information for multiple patients",
+  "name": "Verify table heading drag functionality after login",
   "description": "",
-  "keyword": "Scenario Outline"
+  "keyword": "Scenario"
 });
 formatter.before({
   "status": "passed"
@@ -156,220 +19,45 @@ formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "click on patient tab",
+  "name": "User is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "DragDropStep.user_is_logged_in()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "User clicks on patient tab",
   "keyword": "When "
 });
 formatter.match({
-  "location": "PatientInformationVerificationStep.click_on_patient_tab()"
+  "location": "DragDropStep.user_click_patient_button()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "search patient: \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
+  "name": "User enters patient ID \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
   "keyword": "And "
 });
 formatter.match({
-  "location": "PatientInformationVerificationStep.search_patient(String)"
+  "location": "PatientStep.user_enters_the_patient_id(String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user verifies the patient details from patient info with provided info:",
-  "rows": [
-    {
-      "cells": [
-        "Field",
-        "Value"
-      ]
-    },
-    {
-      "cells": [
-        "FirstName",
-        "Hardstop"
-      ]
-    },
-    {
-      "cells": [
-        "LastName",
-        "Select health test patient 1"
-      ]
-    },
-    {
-      "cells": [
-        "DOB",
-        "01/01/1965"
-      ]
-    },
-    {
-      "cells": [
-        "Address1",
-        "100 Test Drive"
-      ]
-    },
-    {
-      "cells": [
-        "Address2",
-        ""
-      ]
-    },
-    {
-      "cells": [
-        "PreferredPhone",
-        "111-111-1111"
-      ]
-    },
-    {
-      "cells": [
-        "Email",
-        ""
-      ]
-    },
-    {
-      "cells": [
-        "ZipCode",
-        "99999"
-      ]
-    },
-    {
-      "cells": [
-        "City",
-        "Test City"
-      ]
-    },
-    {
-      "cells": [
-        "Sex",
-        "female"
-      ]
-    }
-  ],
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "PatientInformationVerificationStep.user_verifies_patient_details(String,String\u003e)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.after({
-  "status": "passed"
-});
-formatter.after({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Verify patient information for multiple patients",
-  "description": "",
-  "keyword": "Scenario Outline"
-});
-formatter.before({
-  "status": "passed"
-});
-formatter.before({
-  "status": "passed"
-});
-formatter.before({
-  "status": "passed"
-});
-formatter.step({
-  "name": "click on patient tab",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "PatientInformationVerificationStep.click_on_patient_tab()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "search patient: \"a89a0a0c-4202-4b64-949a-5e48c16d1aea\"",
+  "name": "User clicks on the task tab",
   "keyword": "And "
 });
 formatter.match({
-  "location": "PatientInformationVerificationStep.search_patient(String)"
+  "location": "DragDropStep.user_clicks_on_the_task_tab()"
 });
 formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user verifies the patient details from patient info with provided info:",
-  "rows": [
-    {
-      "cells": [
-        "Field",
-        "Value"
-      ]
-    },
-    {
-      "cells": [
-        "FirstName",
-        "Select concierge test patient 8"
-      ]
-    },
-    {
-      "cells": [
-        "LastName",
-        "Hardstop"
-      ]
-    },
-    {
-      "cells": [
-        "DOB",
-        "01/01/1965"
-      ]
-    },
-    {
-      "cells": [
-        "Address1",
-        "100 Test Drive"
-      ]
-    },
-    {
-      "cells": [
-        "Address2",
-        ""
-      ]
-    },
-    {
-      "cells": [
-        "PreferredPhone",
-        "111-111-1111"
-      ]
-    },
-    {
-      "cells": [
-        "Email",
-        ""
-      ]
-    },
-    {
-      "cells": [
-        "ZipCode",
-        "99999"
-      ]
-    },
-    {
-      "cells": [
-        "City",
-        "Test City"
-      ]
-    },
-    {
-      "cells": [
-        "Sex",
-        "female"
-      ]
-    }
-  ],
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "PatientInformationVerificationStep.user_verifies_patient_details(String,String\u003e)"
-});
-formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError: Failed to click on the task tab: Failed to click on the Task tab: element click intercepted: Element \u003cbutton class\u003d\"src-routes-PharmacistPortal-LandingPage-components-MenuBar-__regularButton___19gWx\" type\u003d\"button\"\u003e...\u003c/button\u003e is not clickable at point (32, 21). Other element would receive the click: \u003cdiv class\u003d\"src-components-Loading-__wrapper___20bLO\"\u003e...\u003c/div\u003e\n  (Session info: chrome\u003d129.0.6668.90)\nBuild info: version: \u00274.24.0\u0027, revision: \u0027748ffc9bc3\u0027\nSystem info: os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002717.0.1\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCommand: [245829409ffcbec20218f2b446fc3986, clickElement {id\u003df.AF631D5C33443C071E64A52ACD7A51AF.d.B35C11D956E8E7BE0440C27FFF7B30C8.e.84}]\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.90, chrome: {chromedriverVersion: 129.0.6668.70 (df87d5cf12b1..., userDataDir: C:\\Users\\zaina\\AppData\\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64786}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64786/devtoo..., se:cdpVersion: 129.0.6668.90, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nElement: [[ChromeDriver: chrome on windows (245829409ffcbec20218f2b446fc3986)] -\u003e xpath: //button[text()\u003d\u0027Tasks\u0027]]\nSession ID: 245829409ffcbec20218f2b446fc3986\r\n\tat org.testng.Assert.fail(Assert.java:99)\r\n\tat StepDefinition.DragDropStep.user_clicks_on_the_task_tab(DragDropStep.java:61)\r\n\tat ✽.User clicks on the task tab(src/test/java/features/DragdropVerification.feature:7)\r\n",
+  "status": "failed"
 });
 formatter.after({
   "status": "passed"

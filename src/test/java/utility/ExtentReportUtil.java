@@ -22,7 +22,7 @@ public class ExtentReportUtil {
 
     // Initialize the Extent Report
     public static void initExtentReport() {
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(REPORT_PATH + "/Report.html");
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(REPORT_PATH + "/DashboardPage.html");
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
 

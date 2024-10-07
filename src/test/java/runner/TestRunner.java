@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 //"src/test/java/features/dashboard.feature"  // Dashboard feature
                 //"src/test/java/features"
                 //"src/test/java/features/Patient.feature"  //patient feature
-                "src/test/java/features/Patient-Information-Verification.feature"
+                "src/test/java/features/DragdropVerification.feature"
 
         },
         glue = {"StepDefinition"},

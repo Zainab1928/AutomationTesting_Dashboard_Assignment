@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 4881790800,
+              "duration": 7414519100,
               "status": "passed"
             },
             "match": {
@@ -15,31 +15,31 @@
           },
           {
             "result": {
-              "duration": 10659522100,
+              "duration": 6471800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "DragDropStep.setUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 40112625200,
               "status": "passed"
             },
             "match": {
               "location": "PatientInformationVerificationStep.setUp()"
             }
-          },
-          {
-            "result": {
-              "duration": 90204800,
-              "status": "passed"
-            },
-            "match": {
-              "location": "PatientStep.setUp()"
-            }
           }
         ],
-        "line": 21,
-        "name": "Verify patient information for multiple patients",
+        "line": 3,
+        "name": "Verify table heading drag functionality after login",
         "description": "",
-        "id": "etl-patient-information-verification;verify-patient-information-for-multiple-patients;;2",
+        "id": "verify-draggable-table-headings-in-the-patient-task;verify-table-heading-drag-functionality-after-login",
         "after": [
           {
             "result": {
-              "duration": 1055815900,
+              "duration": 3690401400,
               "status": "passed"
             },
             "match": {
@@ -48,7 +48,7 @@
           },
           {
             "result": {
-              "duration": 212803100,
+              "duration": 290043000,
               "status": "passed"
             },
             "match": {
@@ -57,295 +57,71 @@
           }
         ],
         "type": "scenario",
-        "keyword": "Scenario Outline",
+        "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 4063848900,
+              "duration": 5054212000,
               "status": "passed"
             },
             "line": 4,
-            "name": "click on patient tab",
+            "name": "User is logged in",
             "match": {
-              "location": "PatientInformationVerificationStep.click_on_patient_tab()"
+              "location": "DragDropStep.user_is_logged_in()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 404125700,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "User clicks on patient tab",
+            "match": {
+              "location": "DragDropStep.user_click_patient_button()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 15430573300,
+              "duration": 1641612500,
               "status": "passed"
             },
-            "line": 5,
-            "name": "search patient: \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
+            "line": 6,
+            "name": "User enters patient ID \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
             "match": {
               "arguments": [
                 {
                   "val": "da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9",
-                  "offset": 17
+                  "offset": 24
                 }
               ],
-              "location": "PatientInformationVerificationStep.search_patient(String)"
+              "location": "PatientStep.user_enters_the_patient_id(String)"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "duration": 483383400,
-              "status": "passed"
+              "error_message": "java.lang.AssertionError: Failed to click on the task tab: Failed to click on the Task tab: element click intercepted: Element \u003cbutton class\u003d\"src-routes-PharmacistPortal-LandingPage-components-MenuBar-__regularButton___19gWx\" type\u003d\"button\"\u003e...\u003c/button\u003e is not clickable at point (32, 21). Other element would receive the click: \u003cdiv class\u003d\"src-components-Loading-__wrapper___20bLO\"\u003e...\u003c/div\u003e\n  (Session info: chrome\u003d129.0.6668.90)\nBuild info: version: \u00274.24.0\u0027, revision: \u0027748ffc9bc3\u0027\nSystem info: os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002717.0.1\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCommand: [245829409ffcbec20218f2b446fc3986, clickElement {id\u003df.AF631D5C33443C071E64A52ACD7A51AF.d.B35C11D956E8E7BE0440C27FFF7B30C8.e.84}]\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.90, chrome: {chromedriverVersion: 129.0.6668.70 (df87d5cf12b1..., userDataDir: C:\\Users\\zaina\\AppData\\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64786}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64786/devtoo..., se:cdpVersion: 129.0.6668.90, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nElement: [[ChromeDriver: chrome on windows (245829409ffcbec20218f2b446fc3986)] -\u003e xpath: //button[text()\u003d\u0027Tasks\u0027]]\nSession ID: 245829409ffcbec20218f2b446fc3986\r\n\tat org.testng.Assert.fail(Assert.java:99)\r\n\tat StepDefinition.DragDropStep.user_clicks_on_the_task_tab(DragDropStep.java:61)\r\n\tat ✽.User clicks on the task tab(src/test/java/features/DragdropVerification.feature:7)\r\n",
+              "duration": 1507933100,
+              "status": "failed"
             },
-            "line": 6,
-            "name": "user verifies the patient details from patient info with provided info:",
+            "line": 7,
+            "name": "User clicks on the task tab",
             "match": {
-              "location": "PatientInformationVerificationStep.user_verifies_patient_details(String,String\u003e)"
-            },
-            "rows": [
-              {
-                "cells": [
-                  "Field",
-                  "Value"
-                ]
-              },
-              {
-                "cells": [
-                  "FirstName",
-                  "Hardstop"
-                ]
-              },
-              {
-                "cells": [
-                  "LastName",
-                  "Select health test patient 1"
-                ]
-              },
-              {
-                "cells": [
-                  "DOB",
-                  "01/01/1965"
-                ]
-              },
-              {
-                "cells": [
-                  "Address1",
-                  "100 Test Drive"
-                ]
-              },
-              {
-                "cells": [
-                  "Address2",
-                  ""
-                ]
-              },
-              {
-                "cells": [
-                  "PreferredPhone",
-                  "111-111-1111"
-                ]
-              },
-              {
-                "cells": [
-                  "Email",
-                  ""
-                ]
-              },
-              {
-                "cells": [
-                  "ZipCode",
-                  "99999"
-                ]
-              },
-              {
-                "cells": [
-                  "City",
-                  "Test City"
-                ]
-              },
-              {
-                "cells": [
-                  "Sex",
-                  "female"
-                ]
-              }
-            ],
-            "keyword": "Then "
-          }
-        ]
-      },
-      {
-        "before": [
-          {
-            "result": {
-              "duration": 2480677800,
-              "status": "passed"
-            },
-            "match": {
-              "location": "DashboardStep.setUp()"
-            }
-          },
-          {
-            "result": {
-              "duration": 14899211000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "PatientInformationVerificationStep.setUp()"
-            }
-          },
-          {
-            "result": {
-              "duration": 4939600,
-              "status": "passed"
-            },
-            "match": {
-              "location": "PatientStep.setUp()"
-            }
-          }
-        ],
-        "line": 22,
-        "name": "Verify patient information for multiple patients",
-        "description": "",
-        "id": "etl-patient-information-verification;verify-patient-information-for-multiple-patients;;3",
-        "after": [
-          {
-            "result": {
-              "duration": 669749300,
-              "status": "passed"
-            },
-            "match": {
-              "location": "DashboardStep.tearDown()"
-            }
-          },
-          {
-            "result": {
-              "duration": 137587100,
-              "status": "passed"
-            },
-            "match": {
-              "location": "PatientInformationVerificationStep.tearDown()"
-            }
-          }
-        ],
-        "type": "scenario",
-        "keyword": "Scenario Outline",
-        "steps": [
-          {
-            "result": {
-              "duration": 4190776400,
-              "status": "passed"
-            },
-            "line": 4,
-            "name": "click on patient tab",
-            "match": {
-              "location": "PatientInformationVerificationStep.click_on_patient_tab()"
-            },
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "duration": 6139972300,
-              "status": "passed"
-            },
-            "line": 5,
-            "name": "search patient: \"a89a0a0c-4202-4b64-949a-5e48c16d1aea\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "a89a0a0c-4202-4b64-949a-5e48c16d1aea",
-                  "offset": 17
-                }
-              ],
-              "location": "PatientInformationVerificationStep.search_patient(String)"
+              "location": "DragDropStep.user_clicks_on_the_task_tab()"
             },
             "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 509862500,
-              "status": "passed"
-            },
-            "line": 6,
-            "name": "user verifies the patient details from patient info with provided info:",
-            "match": {
-              "location": "PatientInformationVerificationStep.user_verifies_patient_details(String,String\u003e)"
-            },
-            "rows": [
-              {
-                "cells": [
-                  "Field",
-                  "Value"
-                ]
-              },
-              {
-                "cells": [
-                  "FirstName",
-                  "Select concierge test patient 8"
-                ]
-              },
-              {
-                "cells": [
-                  "LastName",
-                  "Hardstop"
-                ]
-              },
-              {
-                "cells": [
-                  "DOB",
-                  "01/01/1965"
-                ]
-              },
-              {
-                "cells": [
-                  "Address1",
-                  "100 Test Drive"
-                ]
-              },
-              {
-                "cells": [
-                  "Address2",
-                  ""
-                ]
-              },
-              {
-                "cells": [
-                  "PreferredPhone",
-                  "111-111-1111"
-                ]
-              },
-              {
-                "cells": [
-                  "Email",
-                  ""
-                ]
-              },
-              {
-                "cells": [
-                  "ZipCode",
-                  "99999"
-                ]
-              },
-              {
-                "cells": [
-                  "City",
-                  "Test City"
-                ]
-              },
-              {
-                "cells": [
-                  "Sex",
-                  "female"
-                ]
-              }
-            ],
-            "keyword": "Then "
           }
         ]
       }
     ],
-    "name": "ETL Patient Information Verification",
+    "name": "Verify draggable table headings in the Patient Task",
     "description": "",
-    "id": "etl-patient-information-verification",
+    "id": "verify-draggable-table-headings-in-the-patient-task",
     "keyword": "Feature",
-    "uri": "src/test/java/features/Patient-Information-Verification.feature",
+    "uri": "src/test/java/features/DragdropVerification.feature",
     "tags": []
   }
 ]
