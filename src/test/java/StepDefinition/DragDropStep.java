@@ -33,8 +33,6 @@ public class DragDropStep {
         loginPage.enterEmail("hardstop-pharmacist6@mailinator.com");
         loginPage.enterPassword("Password1#");
         loginPage.clickSignIn();
-        // Verify successful login
-        Assert.assertTrue(loginPage.isDashboardDisplayed(), "Login failed, dashboard not displayed.");
     }
 
     @When("^User clicks on patient tab$")

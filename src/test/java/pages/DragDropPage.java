@@ -79,6 +79,11 @@ public class DragDropPage {
         actions.moveToElement(showHideBtn).click().perform();
     }
 
+    // Click reset button
+    public void clickResetButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(RESET_BUTTON))).click();
+    }
+
     // Method to drag and drop columns
     public void dragAndDrop(String column1, String column2) {
         By sourceColumnButton = By.xpath("//div[text()='" + column1 + "']/parent::div/following-sibling::div/child::button[1]");
@@ -145,8 +150,4 @@ public class DragDropPage {
         Assert.assertEquals(actualColumnOrderWithoutFirst, expectedColumnOrder, "The column sequence is incorrect after drag and drop.");
     }
 
-    // Click reset button
-    public void clickResetButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(RESET_BUTTON))).click();
-    }
 }
