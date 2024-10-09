@@ -1,12 +1,12 @@
 [
   {
-    "line": 1,
+    "line": 2,
     "elements": [
       {
         "before": [
           {
             "result": {
-              "duration": 7414519100,
+              "duration": 6781412300,
               "status": "passed"
             },
             "match": {
@@ -15,7 +15,7 @@
           },
           {
             "result": {
-              "duration": 6471800,
+              "duration": 15146100,
               "status": "passed"
             },
             "match": {
@@ -24,7 +24,7 @@
           },
           {
             "result": {
-              "duration": 40112625200,
+              "duration": 10012564900,
               "status": "passed"
             },
             "match": {
@@ -32,14 +32,14 @@
             }
           }
         ],
-        "line": 3,
-        "name": "Verify table heading drag functionality after login",
+        "line": 27,
+        "name": "Validate column order after drag and drop in a new table",
         "description": "",
-        "id": "verify-draggable-table-headings-in-the-patient-task;verify-table-heading-drag-functionality-after-login",
+        "id": "validate-drag-and-drop-functionality-for-the-new-table;validate-column-order-after-drag-and-drop-in-a-new-table;;2",
         "after": [
           {
             "result": {
-              "duration": 3690401400,
+              "duration": 1504091300,
               "status": "passed"
             },
             "match": {
@@ -48,7 +48,7 @@
           },
           {
             "result": {
-              "duration": 290043000,
+              "duration": 213948400,
               "status": "passed"
             },
             "match": {
@@ -57,14 +57,14 @@
           }
         ],
         "type": "scenario",
-        "keyword": "Scenario",
+        "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 5054212000,
+              "duration": 7119222900,
               "status": "passed"
             },
-            "line": 4,
+            "line": 6,
             "name": "User is logged in",
             "match": {
               "location": "DragDropStep.user_is_logged_in()"
@@ -73,10 +73,10 @@
           },
           {
             "result": {
-              "duration": 404125700,
+              "duration": 335273900,
               "status": "passed"
             },
-            "line": 5,
+            "line": 7,
             "name": "User clicks on patient tab",
             "match": {
               "location": "DragDropStep.user_click_patient_button()"
@@ -85,10 +85,10 @@
           },
           {
             "result": {
-              "duration": 1641612500,
+              "duration": 1815626600,
               "status": "passed"
             },
-            "line": 6,
+            "line": 8,
             "name": "User enters patient ID \"da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9\"",
             "match": {
               "arguments": [
@@ -103,25 +103,143 @@
           },
           {
             "result": {
-              "error_message": "java.lang.AssertionError: Failed to click on the task tab: Failed to click on the Task tab: element click intercepted: Element \u003cbutton class\u003d\"src-routes-PharmacistPortal-LandingPage-components-MenuBar-__regularButton___19gWx\" type\u003d\"button\"\u003e...\u003c/button\u003e is not clickable at point (32, 21). Other element would receive the click: \u003cdiv class\u003d\"src-components-Loading-__wrapper___20bLO\"\u003e...\u003c/div\u003e\n  (Session info: chrome\u003d129.0.6668.90)\nBuild info: version: \u00274.24.0\u0027, revision: \u0027748ffc9bc3\u0027\nSystem info: os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002717.0.1\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCommand: [245829409ffcbec20218f2b446fc3986, clickElement {id\u003df.AF631D5C33443C071E64A52ACD7A51AF.d.B35C11D956E8E7BE0440C27FFF7B30C8.e.84}]\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.90, chrome: {chromedriverVersion: 129.0.6668.70 (df87d5cf12b1..., userDataDir: C:\\Users\\zaina\\AppData\\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64786}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64786/devtoo..., se:cdpVersion: 129.0.6668.90, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nElement: [[ChromeDriver: chrome on windows (245829409ffcbec20218f2b446fc3986)] -\u003e xpath: //button[text()\u003d\u0027Tasks\u0027]]\nSession ID: 245829409ffcbec20218f2b446fc3986\r\n\tat org.testng.Assert.fail(Assert.java:99)\r\n\tat StepDefinition.DragDropStep.user_clicks_on_the_task_tab(DragDropStep.java:61)\r\n\tat ✽.User clicks on the task tab(src/test/java/features/DragdropVerification.feature:7)\r\n",
-              "duration": 1507933100,
-              "status": "failed"
+              "duration": 499990900,
+              "status": "passed"
             },
-            "line": 7,
+            "line": 9,
             "name": "User clicks on the task tab",
             "match": {
               "location": "DragDropStep.user_clicks_on_the_task_tab()"
             },
             "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1046192600,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "User drags the \"Due Date\" and drops it on \"Status\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Due Date\"",
+                  "offset": 15
+                },
+                {
+                  "val": "\"Status\"",
+                  "offset": 42
+                }
+              ],
+              "location": "DragDropStep.user_drags_the_and_drops_it_on(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "error_message": "java.lang.AssertionError: The column sequence is incorrect after drag and drop.: lists don\u0027t have the same size expected [12] but found [11]\r\n\tat org.testng.Assert.fail(Assert.java:99)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:1037)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:140)\r\n\tat org.testng.Assert.assertEquals(Assert.java:122)\r\n\tat org.testng.Assert.assertEquals(Assert.java:907)\r\n\tat org.testng.Assert.assertEquals(Assert.java:1089)\r\n\tat pages.DragDropPage.validateColumns(DragDropPage.java:125)\r\n\tat StepDefinition.DragDropStep.the_new_column_index_sequence_should_be(DragDropStep.java:70)\r\n\tat ✽.The new column index sequence should be:(src/test/java/features/DragdropVerification.feature:11)\r\n",
+              "duration": 479301700,
+              "status": "failed"
+            },
+            "line": 11,
+            "name": "The new column index sequence should be:",
+            "match": {
+              "location": "DragDropStep.the_new_column_index_sequence_should_be(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Column"
+                ]
+              },
+              {
+                "cells": [
+                  "Priority"
+                ]
+              },
+              {
+                "cells": [
+                  "Status"
+                ]
+              },
+              {
+                "cells": [
+                  "Due Date"
+                ]
+              },
+              {
+                "cells": [
+                  "Task"
+                ]
+              },
+              {
+                "cells": [
+                  "Name"
+                ]
+              },
+              {
+                "cells": [
+                  "Phone"
+                ]
+              },
+              {
+                "cells": [
+                  "Note"
+                ]
+              },
+              {
+                "cells": [
+                  "Assigned To"
+                ]
+              },
+              {
+                "cells": [
+                  "Recipient Role"
+                ]
+              },
+              {
+                "cells": [
+                  "Recipient Name"
+                ]
+              },
+              {
+                "cells": [
+                  "Language"
+                ]
+              },
+              {
+                "cells": [
+                  "GNR Date (Adh)"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@DragAndDrop"
+          },
+          {
+            "name": "@testScenario1"
           }
         ]
       }
     ],
-    "name": "Verify draggable table headings in the Patient Task",
+    "name": "Validate drag and drop functionality for the new table",
     "description": "",
-    "id": "verify-draggable-table-headings-in-the-patient-task",
+    "id": "validate-drag-and-drop-functionality-for-the-new-table",
     "keyword": "Feature",
     "uri": "src/test/java/features/DragdropVerification.feature",
-    "tags": []
+    "tags": [
+      {
+        "name": "@DragAndDrop",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
   }
 ]

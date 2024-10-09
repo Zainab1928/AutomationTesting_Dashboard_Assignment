@@ -2,30 +2,29 @@ package StepDefinition;
 
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
-import org.openqa.selenium.WebDriver;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
-import pages.LoginPage;
-import pages.DragDropPage;
-import utility.DriverFactory;
-import utility.AutomationException;
+import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import pages.DragDropPage;
+import pages.LoginPage;
+import utility.AutomationException;
+import utility.DriverFactory;
 
 public class DragDropStep {
-    WebDriver driver;
-    LoginPage loginPage;
-    DragDropPage dragDropPage;  // Ensure it's named consistently
 
-    // Create an instance of DashboardStep for patient button click
-    DashboardStep dashboardStep;
+    private WebDriver driver;
+    private LoginPage loginPage;
+    private DragDropPage dragAndDropPage;
 
-    // @Before Hook to initialize driver and pages before each scenario
+
     @Before
     public void setUp() {
         driver = DriverFactory.getDriver();
         loginPage = new LoginPage(driver);
-        dragDropPage = new DragDropPage(driver);  // Ensure it's initialized
+        dragAndDropPage = new DragDropPage(driver);
     }
 
     @Given("User is logged in")
@@ -39,14 +38,14 @@ public class DragDropStep {
     }
 
     @When("^User clicks on patient tab$")
-    public void user_click_patient_button()throws AutomationException {
+    public void user_click_patient_button() throws AutomationException {
         DragDropPage.clickPatient();
     }
 
     @And("^User enters the patient ID \"([^\"]*)\"$")
-    public void user_enterpatient_id(String patientId) throws AutomationException {
+    public void user_enter_patient_id(String patientId) throws AutomationException {
         try {
-            DragDropPage.PatientID(patientId);
+            DragDropPage.enterPatientID(patientId);
         } catch (Exception e) {
             throw new AutomationException("Failed to enter Patient ID: " + e.getMessage(), e);
         }
@@ -55,18 +54,35 @@ public class DragDropStep {
     @When("User clicks on the task tab")
     public void user_clicks_on_the_task_tab() {
         try {
-            dragDropPage.clickTaskTab();  // Click on the task tab
+            dragAndDropPage.clickTaskTab();  // Click on the task tab
         } catch (AutomationException e) {
             Assert.fail("Failed to click on the task tab: " + e.getMessage());
         }
     }
 
-    @Then("User verifies that the table headings are draggable")
-    public void user_verifies_that_the_table_headings_are_draggable() {
-        try {
-            dragDropPage.verifyDraggableTableHeaders();  // Verify draggable headers
-        } catch (AutomationException e) {
-            Assert.fail("Failed to verify draggable table headings: " + e.getMessage());
-        }
+    @When("User drags the {string} and drops it on {string}")
+    public void user_drags_the_and_drops_it_on(String column1, String column2) {
+        dragAndDropPage.dragAndDrop(column1, column2);
+    }
+
+    @Then("The new column index sequence should be:")
+    public void the_new_column_index_sequence_should_be(DataTable expectedTable) {
+        dragAndDropPage.validateColumns(expectedTable);
+    }
+
+    @When("User drags the {string} and drops it on {string} from show hide section")
+    public void userDragsTheAndDropsItOnFromShowHideSection(String column1, String column2) {
+        dragAndDropPage.clicksThreeDotAndShowHideButton();
+        dragAndDropPage.dragAndDropInList(column1, column2);
+    }
+
+    @Then("The new column index sequence in a list should be:")
+    public void theNewColumnIndexSequenceInAListShouldBe(DataTable expectedTable) throws InterruptedException {
+        dragAndDropPage.validateList(expectedTable);
+    }
+
+    @And("User clicks on Reset Button")
+    public void userClicksOnResetButton() {
+        dragAndDropPage.clickResetButton();
     }
 }
