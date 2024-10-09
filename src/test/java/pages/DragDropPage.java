@@ -21,18 +21,17 @@ public class DragDropPage {
     private static WebDriverWait wait;
     private Actions actions;
 
-    // Locators
-    private static final String PATIENT_INPUT = "//input[@type='search']";
-    private By taskTab = By.xpath("//button[text()='Tasks']");
-    private By moveButton = By.xpath("//*[@id='patientTriageGlobalTable']/div/div/div[2]/div/div[2]/div[2]/table/thead/tr/th[6]/div[1]/div[2]/button[1]");
-    private By tableHeadings = By.xpath("//table[@class='mantine-Table-root mantine-1yuh4td']//thead/tr/th");
-    private static By patientMenu = By.xpath("//button[contains(text(),'Patient')]");
-    private By tasksIdInputLocator = By.xpath("//button[text()='Tasks']");
-    private By taskTableLocator = By.xpath("//tr[@class='mantine-fvktgm']");
-    private By threeDotButtonLocator = By.xpath("//button[contains(@class,'mantine-4nqhrt')]");
-    private By showHideLocator = By.xpath("//button[@aria-label='Show/Hide columns']");
-    private By showHideDropDownLocator = By.xpath("//button[@class='mantine-Menu-item mantine-1okg4gn']");
-    private By resetBtnLocator = By.xpath("(//button[contains(@class,'mantine-Button-root')])[2]");
+    // Locators declared as static final fields
+    public static final String PATIENT_ID_INPUT = "//input[@type='search']";
+    public static final String TASK_TAB = "//button[text()='Tasks']";
+    //public static final String MOVE_BUTTON = "//*[@id='patientTriageGlobalTable']/div/div/div[2]/div/div[2]/div[2]/table/thead/tr/th[6]/div[1]/div[2]/button[1]";
+    public static final String TABLE_HEADINGS = "//table[@class='mantine-Table-root mantine-1yuh4td']//thead/tr/th";
+    public static final String PATIENT_MENU = "//button[contains(text(),'Patient')]";
+    public static final String TASK_TABLE = "//tr[@class='mantine-fvktgm']";
+    public static final String THREE_DOT_BUTTON = "//button[contains(@class,'mantine-4nqhrt')]";
+    public static final String SHOW_HIDE_BUTTON = "//button[@aria-label='Show/Hide columns']";
+    public static final String SHOW_HIDE_DROPDOWN = "//button[@class='mantine-Menu-item mantine-1okg4gn']";
+    public static final String RESET_BUTTON = "(//button[contains(@class,'mantine-Button-root')])[2]";
 
     // Constructor
     public DragDropPage(WebDriver driver) {
@@ -44,7 +43,7 @@ public class DragDropPage {
     // Method to click the Patient button
     public static void clickPatient() {
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(patientMenu)).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PATIENT_MENU))).click();
             wait.until(ExpectedConditions.urlContains("pharmacist-portal"));
         } catch (Exception e) {
             Assert.fail("Patient button not found or clickable: " + e.getMessage());
@@ -53,7 +52,7 @@ public class DragDropPage {
 
     // Method to enter Patient ID
     public static void enterPatientID(String patientId) {
-        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PATIENT_INPUT)));
+        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PATIENT_ID_INPUT)));
         input.clear();
         input.sendKeys(patientId);
     }
@@ -61,7 +60,7 @@ public class DragDropPage {
     // Method to click the Task tab
     public void clickTaskTab() throws AutomationException {
         try {
-            WebElement taskTabElement = wait.until(ExpectedConditions.elementToBeClickable(taskTab));
+            WebElement taskTabElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(TASK_TAB)));
 
             // Use JavaScript Executor to click
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", taskTabElement);
@@ -70,14 +69,13 @@ public class DragDropPage {
         }
     }
 
-
     // Method to click three-dot and Show/Hide button
     public void clicksThreeDotAndShowHideButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(taskTableLocator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(TASK_TABLE)));
 
-        WebElement threeDotBtn = driver.findElement(threeDotButtonLocator);
+        WebElement threeDotBtn = driver.findElement(By.xpath(THREE_DOT_BUTTON));
         actions.moveToElement(threeDotBtn).click().perform();
-        WebElement showHideBtn = driver.findElement(showHideLocator);
+        WebElement showHideBtn = driver.findElement(By.xpath(SHOW_HIDE_BUTTON));
         actions.moveToElement(showHideBtn).click().perform();
     }
 
@@ -85,14 +83,14 @@ public class DragDropPage {
     public void dragAndDrop(String column1, String column2) {
         By sourceColumnButton = By.xpath("//div[text()='" + column1 + "']/parent::div/following-sibling::div/child::button[1]");
         By destinationColumnButton = By.xpath("//div[text()='" + column2 + "']/parent::div/following-sibling::div/child::button[1]");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(taskTableLocator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(TASK_TABLE)));
         WebElement sourceColumn = driver.findElement(sourceColumnButton);
         WebElement destinationColumn = driver.findElement(destinationColumnButton);
         actions.dragAndDrop(sourceColumn, destinationColumn).perform();
     }
 
     public void dragAndDropInList(String column1, String column2) {
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(showHideDropDownLocator));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(SHOW_HIDE_DROPDOWN)));
         By sourceColumnButton = By.xpath("//label[text()='" + column1 + "']/parent::div/parent::div/parent::div/preceding-sibling::button");
         By destinationColumnButton = By.xpath("//label[text()='" + column2 + "']/parent::div/parent::div/parent::div/preceding-sibling::button");
 
@@ -109,8 +107,8 @@ public class DragDropPage {
             expectedColumnOrder.add(row.get("Column"));
         }
 
-        // Fetch the actual column order from the table (make sure the XPath is correct)
-        List<WebElement> columns = driver.findElements(By.xpath("//table[@class='mantine-Table-root mantine-1yuh4td']//thead/tr/th"));
+        // Fetch the actual column order from the table
+        List<WebElement> columns = driver.findElements(By.xpath(TABLE_HEADINGS));
 
         List<String> actualColumnOrder = new ArrayList<>();
         for (WebElement column : columns) {
@@ -125,7 +123,6 @@ public class DragDropPage {
         Assert.assertEquals(actualColumnOrder, expectedColumnOrder, "The column sequence is incorrect after drag and drop.");
     }
 
-
     public void validateList(DataTable expectedTable) throws InterruptedException {
         Thread.sleep(5000);
         List<Map<String, String>> expectedColumns = expectedTable.asMaps(String.class, String.class);
@@ -133,12 +130,14 @@ public class DragDropPage {
         for (Map<String, String> row : expectedColumns) {
             expectedColumnOrder.add(row.get("Column"));
         }
+
         // Re-fetch the actual column order from the table
         List<WebElement> columns = driver.findElements(By.xpath("//label[contains(@class,'mantine-Switch-label')]"));
         List<String> actualColumnOrder = new ArrayList<>();
         for (WebElement column : columns) {
             actualColumnOrder.add(column.getText());
         }
+
         // Skip the first element of actualColumnOrder
         List<String> actualColumnOrderWithoutFirst = actualColumnOrder.subList(1, actualColumnOrder.size());
 
@@ -148,6 +147,6 @@ public class DragDropPage {
 
     // Click reset button
     public void clickResetButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(resetBtnLocator)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(RESET_BUTTON))).click();
     }
 }
